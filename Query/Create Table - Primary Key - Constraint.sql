@@ -38,3 +38,25 @@ CREATE TABLE members (
 
 DESC members;
 
+-- UNIQUE 제약 조건
+-- 동일한 값이 두 번 이상 나타나지 않도록
+CREATE TABLE users (
+	user_ID INT PRIMARY KEY,
+	user_name VARCHAR(50) NOT NULL,
+	email VARCHAR(100) UNIQUE -- email 열의 고유 보장, Null 허용
+);
+
+DESCRIBE users;
+SELECT * FROM users;
+
+-- CHECK 제약 조건
+CREATE TABLE adults (
+	id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    age INT,
+    CHECK (age >= 19)	-- age 필드에 값이 들어올 때 19세 이상인지 체크
+);
+
+DESCRIBE adults;
+SELECT * FROM adults;
+
