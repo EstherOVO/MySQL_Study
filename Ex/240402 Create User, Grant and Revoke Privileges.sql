@@ -20,3 +20,9 @@ REVOKE SELECT ON sakila.* FROM report_user@localhost;
 -- 문제 6: 'dev_user' 사용자에게 부여된 'sakila' 데이터베이스의 'actor' 테이블에 대한 모든 권한을 회수하고, 대신 SELECT 권한만 다시 부여하세요.
 REVOKE ALL ON sakila.actor FROM dev_user@localhost;
 GRANT SELECT ON sakila.actor TO dev_user@localhost;
+
+-- 연습문제에서 작성한 user 삭제
+DROP USER 'report_user'@localhost;
+DROP USER 'admin_user'@localhost;
+DROP USER 'dev_user'@localhost;
+DROP USER 'guest_user'@localhost;
