@@ -75,7 +75,7 @@
 3. 외부 스키마 : 사용자 관점에서 보는 DB의 일부분
     - 애플리케이션이 접근하는 View, 최종 사용자, 응용 프로그램 개발자가 다루는 영역
 
-## SQL(Structured Query Language)
+# ▨ SQL(Structured Query Language) ▨
 - 관계형 데이터베이스(RDBMS)에서 데이터를 관리하기 위해 사용하는 표준화된 언어
 - 데이터 정의 언어(Data Definition Language) : DDL
 - 데이터 조작 언어(Data Manipulation Language) : DML
@@ -85,14 +85,22 @@
 
 ## DCL(Data Control Language)
 - 데이터의 접근 권한을 제어하고 관리하는 명령어들의 집합
-1. GRANT : 권한 부여
+1. **유저 생성 SQL문**
+    ```SQL
+    CREATE USER '사용자명'@'호스트명' IDENTIFIED BY '비밀번호';
+    ```
+2. 생성한 유저 삭제 SQL문
+    ```SQL
+    DROP USER '사용자명'@'호스트명';
+    ```
+3. GRANT : 권한 부여
     - 특정 사용자나 사용자 그룹에게 혹은 특정 데이터베이스(스키마)나 특정 테이블에서 명령할 수 있는 권한 부여
     - 예시)
     ```SQL
     GRANT SELECT ON database_name.table_name
     TO '사용자명'@'호스트명';
     ```
-2. REVOKE : 권한 회수
+4. REVOKE : 권한 회수
     - 사용자에게 부여된 권한이 더이상 필요하지 않거나, 보안상의 이유로 권한 회수할 때 사용
     ```SQL
     REVOKE SELECT ON database_name.table_name
