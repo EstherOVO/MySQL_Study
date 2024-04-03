@@ -240,3 +240,33 @@ CREATE TABLE 테이블명 (
       - 참조된 행의 변경 또는 삭제 자체를 하지 않음
    4. SET DEFAULT
       - 삭제나 수정될 때 사전에 정의된 기본 값으로 설정
+
+## ALTER
+- DDL(데이터 정의어), 데이터베이스 및 객체의 구조를 수정하는 데 사용
+- ALTER TABLE
+  - 테이블의 열을 추가, 삭제, 타입 변경 등의 수정 작업을 할 수 있다.
+    1. ADD(추가)
+    ```SQL
+    ALTER TABLE 테이블명;
+    ADD COLUMN 컬럼명 데이터타입;
+    ```
+    2. DROP(삭제)
+    ```SQL
+    ALTER TABLE 테이블명;
+    DROP COLUMN 컬럼명;
+    ```
+    3. MODIFY 데이터 타입 수정
+    ```SQL
+    ALTER TABLE 테이블명;
+    MODIFY COLUMN 컬럼명 새로운데이터타입;
+    ```
+    4. 열이름 변경(MySQL의 경우)
+    ```SQL
+    ALTER TABLE 테이블명;
+    CHANGE COLUMN 컬럼명 새로운컬럼명 새로운데이터타입;
+    ```
+    5. 테이블 이름 변경
+    ```SQL
+    ALTER TABLE 테이블명;
+    RENAME TO 새로운테이블명;
+    ```
