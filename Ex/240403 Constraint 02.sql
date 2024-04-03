@@ -34,8 +34,8 @@ CREATE TABLE appointments (
     doctor_ID INT,
     status ENUM('예약완료', '진료완료', '예약취소'),
     appointment_date DATE CHECK (appointment_date >= '2020-01-01'),
-    FOREIGN KEY (patient_ID) REFERENCES patients(patient_ID),
-    FOREIGN KEY (doctor_ID) REFERENCES doctors(doctor_ID)
+    FOREIGN KEY (patient_ID) REFERENCES patients (patient_ID),
+    FOREIGN KEY (doctor_ID) REFERENCES doctors (doctor_ID)
 );
 
 DESCRIBE patients;

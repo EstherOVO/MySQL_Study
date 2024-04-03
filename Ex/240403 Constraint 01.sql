@@ -34,9 +34,9 @@ CREATE TABLE borrow_records (
     book_ID INT,
     borrow_date DATE,
     return_date DATE,
-    FOREIGN KEY (member_ID) REFERENCES members(member_ID)
+    FOREIGN KEY (member_ID) REFERENCES members (member_ID)
     ON DELETE CASCADE ON UPDATE NO ACTION,
-    FOREIGN KEY (book_ID) REFERENCES books(book_ID)
+    FOREIGN KEY (book_ID) REFERENCES books (book_ID)
     ON DELETE CASCADE ON UPDATE NO ACTION
 );
 
