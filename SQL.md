@@ -86,26 +86,26 @@
 ## DCL(Data Control Language)
 - 데이터의 접근 권한을 제어하고 관리하는 명령어들의 집합
 1. **유저 생성 SQL문**
-    ```SQL
-    CREATE USER '사용자명'@'호스트명' IDENTIFIED BY '비밀번호';
-    ```
+  ```SQL
+  CREATE USER '사용자명'@'호스트명' IDENTIFIED BY '비밀번호';
+  ```
 2. 생성한 유저 삭제 SQL문
-    ```SQL
-    DROP USER '사용자명'@'호스트명';
-    ```
+  ```SQL
+  DROP USER '사용자명'@'호스트명';
+  ```
 3. GRANT : 권한 부여
     - 특정 사용자나 사용자 그룹에게 혹은 특정 데이터베이스(스키마)나 특정 테이블에서 명령할 수 있는 권한 부여
     - 예시)
-    ```SQL
-    GRANT SELECT ON database_name.table_name
-    TO '사용자명'@'호스트명';
-    ```
+  ```SQL
+  GRANT SELECT ON database_name.table_name
+  TO '사용자명'@'호스트명';
+  ```
 4. REVOKE : 권한 회수
     - 사용자에게 부여된 권한이 더이상 필요하지 않거나, 보안상의 이유로 권한 회수할 때 사용
-    ```SQL
-    REVOKE SELECT ON database_name.table_name
-    FROM '사용자명'@'호스트명';
-    ```
+  ```SQL
+  REVOKE SELECT ON database_name.table_name
+  FROM '사용자명'@'호스트명';
+  ```
 - 권한 부여나 회수는 DB의 보안과 직접적인 관련이 있음으로 신중히 해야 한다.
 - 일반적으로 사용자에게 최소한(필요한)의 권한만 부여하는 **최소 권한 원칙** 따른다.
 - 데이터에 대한 무단 접근을 방지하고, 시스템 보안 수준을 높일 수 있다.
@@ -194,3 +194,49 @@
 ## 도메인 무결성
 - 릴레이션 내 튜플들이 각 속성의 도메인이 지정된 값만 가져야 하는 조건
 - 데이터 타입, Null 허용 또는 Not Null, default, check 제약 조건 등으로 제약 조건을 가진다.
+
+## 테이블 생성
+- CREATE : DDL(데이터 정의어)
+- 데이터베이스 생성 문법
+```SQL
+CREATE DATABASE 데이터베이스명;
+CREATE DATABASE IF NOT EXISTS 데이터베이스명; -- 데이터베이스 존재 확인하고 만든다.
+USE 데이터베이스명; -- 특정 데이터베이스 사용
+```
+- 테이블 생성 문법
+```SQL
+CREATE TABLE 테이블명 (
+  컬럼명1 데이터타입 제약조건,
+  컬럼명2 데이터타입 제약조건,
+  ...
+  ...
+  PRIMARY KEY (하나 또는 그 이상의 컬럼)
+);
+  ```
+
+## 외래 키 참조
+- 참조 무결성 제약조건
+- 한 테이블의 컬럼이 다른 테이블의 키(기본 키)를 참조
+- 외래 키 컬럼에 참조 위치에 존재하지 않는 값을 넣을 경우
+- 참조 무결성을 위반하게 되어 실행되지 않는다 → 참조 무결성 제약조건
+- 데이터 관계의 일관성을 보장
+
+ ```sql
+ FOREIGN KEY (컬럼명) REFERENCES 참조할테이블명(참조할컬럼(기본키)명)
+ ON DELETE [CASECADE/SET NULL/NO ACTION/SET DEFAULT]          -- 삭제할 때 옵션
+ ON UPDATE [CASECADE/SET NULL/NO ACTION/SET DEFAULT]          -- 수정할 때 옵션
+ ```
+
+- 레퍼런스 옵션
+   1. CASECADE : 
+      - 부모 테이블(참조하는 테이블)에서 삭제되거나 키 값이 변경되면
+      - 자식 테이블에서도 동일하게 삭제되거나 변경된다.
+      - 일관성을 유지하는 데 도움이 되는 옵션
+   2. SET NULL
+      - 부모 테이블(참조하는 테이블)에서 삭제되거나 키 값이 변경되면
+      - 자식 테이블(외래 키를 가진 테이블)의 행의 열이 NULL로 변경된다.
+      - 관련 데이터를 삭제하지 않고 유지
+   3. NO ACTION
+      - 참조된 행의 변경 또는 삭제 자체를 하지 않음
+   4. SET DEFAULT
+      - 삭제나 수정될 때 사전에 정의된 기본 값으로 설정
