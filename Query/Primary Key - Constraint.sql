@@ -66,6 +66,7 @@ CREATE TABLE persons (
 	name VARCHAR(100) NOT NULL,
     status VARCHAR(50) DEFAULT '활동 중',	-- 상태 열이 기본 값으로 '활동 중'
     join_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP	-- 가입일 기본 값으로 현재 시간
+    -- 혹은 날짜만 넣고 싶을 경우 join_date DATE DEFAULT (CURRENT_DATE)
 );
 
 DESCRIBE persons;
@@ -110,7 +111,7 @@ DROP TABLE employees;
 DROP TABLE departments;
 
 -- 외래 키 레퍼런스 옵션
--- 1. CASECADE
+-- 1. CASCADE
 CREATE TABLE departments (
 	department_ID INT PRIMARY KEY,
     department_name VARCHAR(255) NOT NULL
@@ -126,7 +127,7 @@ CREATE TABLE employees (
 );
 
 DESCRIBE employees;
--- CASECADE 적용 확인
+-- CASCADE 적용 확인
 SELECT * FROM employees;
 SELECT * FROM departments;
 
