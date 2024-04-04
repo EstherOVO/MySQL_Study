@@ -21,7 +21,6 @@ CREATE TABLE appointments (
     FOREIGN KEY (patient_ID) REFERENCES patients (patient_ID)
 );
 
-
 CREATE TABLE medical_records (
     record_ID INT AUTO_INCREMENT PRIMARY KEY,
     patient_ID INT,
