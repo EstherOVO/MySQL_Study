@@ -2,7 +2,7 @@
 ```
 - 데이터베이스(Database) 또는 스키마(Schema)
 - 컬럼(열, Coulumn) 또는 필드(Field) 또는 속성(Attribute)
-- 행(Row) 또는 레코드(Record)
+- 행(Row) 또는 레코드(Record) 또는 튜플(Tuple)
 ```
 
 - 관계형 데이터베이스(RDBMS)에서 데이터를 관리하기 위해 사용하는 표준화된 언어
