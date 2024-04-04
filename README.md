@@ -78,34 +78,37 @@
 # ▨ SQL(Structured Query Language) ▨
 - 관계형 데이터베이스(RDBMS)에서 데이터를 관리하기 위해 사용하는 표준화된 언어
 - 데이터 정의 언어(Data Definition Language) : DDL
+    - CREATE, ALTER, DROP, TRUNCATE, RENAME
 - 데이터 조작 언어(Data Manipulation Language) : DML
+    - SELECT, INSERT, UPDATE, DELETE
 - 데이터 질의 언어(Data Query Language) : DQL
 - 데이터 제어 언어(Data Control Language) : DCL
+    - GRANT, REVOKE
 - 트랜잭션 제어 언어(Transaction Cotrol Language) : TCL
 
 ## DCL(Data Control Language)
 - 데이터의 접근 권한을 제어하고 관리하는 명령어들의 집합
 1. **유저 생성 SQL문**
-  ```SQL
-  CREATE USER '사용자명'@'호스트명' IDENTIFIED BY '비밀번호';
-  ```
+```SQL
+CREATE USER '사용자명'@'호스트명' IDENTIFIED BY '비밀번호';
+```
 2. 생성한 유저 삭제 SQL문
-  ```SQL
-  DROP USER '사용자명'@'호스트명';
-  ```
+```SQL
+DROP USER '사용자명'@'호스트명';
+```
 3. GRANT : 권한 부여
     - 특정 사용자나 사용자 그룹에게 혹은 특정 데이터베이스(스키마)나 특정 테이블에서 명령할 수 있는 권한 부여
     - 예시)
-  ```SQL
-  GRANT SELECT ON database_name.table_name
-  TO '사용자명'@'호스트명';
-  ```
+    ```SQL
+    GRANT SELECT ON database_name.table_name
+    TO '사용자명'@'호스트명';
+    ```
 4. REVOKE : 권한 회수
     - 사용자에게 부여된 권한이 더이상 필요하지 않거나, 보안상의 이유로 권한 회수할 때 사용
-  ```SQL
-  REVOKE SELECT ON database_name.table_name
-  FROM '사용자명'@'호스트명';
-  ```
+    ```SQL
+    REVOKE SELECT ON database_name.table_name
+    FROM '사용자명'@'호스트명';
+    ```
 - 권한 부여나 회수는 DB의 보안과 직접적인 관련이 있음으로 신중히 해야 한다.
 - 일반적으로 사용자에게 최소한(필요한)의 권한만 부여하는 **최소 권한 원칙** 따른다.
 - 데이터에 대한 무단 접근을 방지하고, 시스템 보안 수준을 높일 수 있다.
@@ -270,3 +273,47 @@ CREATE TABLE 테이블명 (
     ALTER TABLE 테이블명;
     RENAME TO 새로운테이블명;
     ```
+
+## CONSTRAINT 제약조건명(제약조건 이름 명시하기)
+- 제약조건은 생성 시 이름을 생략하고 만들 수 있다.
+- 생략하고 만들 경우 자동으로 제약조건의 이름이 부여된다.
+- 생성 시 `CONSTRAINT 제약조건명` 이 부여되면, 제약조건 이름을 명시할 수 있다.
+- 제약조건의 이름을 확인하기 위해서는 DB객체나 DDL을 확인하면 된다.
+
+```sql
+-- 1. information_schema 오브젝트를 통해 확인
+-- CONTRAINT_NAME 필드 : 제약조건의 이름
+SELECT * FROM information_schema.table_constraints
+WHERE table_name = '테이블명';  -- 테이블명
+
+-- 2. DDL을 통해 확인
+-- SHOW CREATE TABLE 스키마명.테이블명;
+-- 워크벤치의 경우 open value in viewer
+SHOW CREATE TABLE employees;
+```
+
+## DML(데이터 조작어)
+- INSERT(데이터 삽입)
+    - DB의 테이블에 새로운 데이터 행을 추가하는 데 사용하는 SQL 문법
+    ```SQL
+    -- 컬럼을 지정하는 방식
+    -- INSERT 문에 명시된 열의 순서대로 값을 입력한다.
+    INSERT INTO 테이블명 (컬럼명1, 컬럼명2, 컬럼명3 ...)
+    VALUES (값1, 값2, 값3 ...);
+
+    -- 컬럼을 지정하지 않는 방식
+    -- 테이블 정의(DDL)에 명시된 열의 순서대로 값을 입력해야 된다.
+    INSERT INTO 테이블명 VALUES (값1, 값2, 값3 ...);
+
+    -- 여러 행(Row)을 동시에 삽입하기(콤마(,)로 구분)
+    INSERT INTO 테이블명 (컬럼명1, 컬럼명2, 컬럼명3 ...)
+    VALUES (값1, 값2, 값3 ...), -- 첫 번째 행
+           (값1, 값2, 값3 ...)  -- 두 번째 행 ...
+           ... ;                -- N 번째 행 ...
+    ```
+    - 주의사항
+      - 해당 열의 데이터 타입 또는 제약조건을 준수하지 않으면 삽입할 수 없다.
+        - NOT NULL : 반드시 값을 입력
+        - UNIQUE : 중복 값을 넣을 수 없음
+        - AUTO_INCREMENT : 값을 명시하지 안하도 자동 값 할당
+      - 데이터 무결성을 유지해야 한다. 
