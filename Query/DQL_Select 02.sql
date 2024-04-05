@@ -38,3 +38,15 @@ SELECT ENAME, SAL FROM EMP ORDER BY SAL DESC LIMIT 5 OFFSET 5;
 -- LIMIT ~ OFFSET은 대규모의 데이터 셋에서 필요한 부분만 조회하여
 -- 응답 시간 및 성능을 최적화하여 사용자 경험을 개선할 수 있다.
 -- 페이지네이션을 구현하여 효율적인 데이터 관리에 사용한다.
+
+-- DISTINCT
+-- 중복된 결과를 제거하고, 유일하고 고유한 값만 남기기 위하여 사용
+-- SELECT DISTINCT 컬럼명 FROM 테이블명;
+
+-- 중복된 부서 제거하고 고유 부서 확인
+SELECT DISTINCT DEPTNO FROM EMP;
+
+SELECT DISTINCT DEPTNO FROM EMP ORDER BY DEPTNO;
+
+-- 핵심적인 데이터만 보고 싶을 때 데이터 정제
+-- 종류만 확인하고 싶을 때 사용
