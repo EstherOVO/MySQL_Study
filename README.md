@@ -1,7 +1,7 @@
 # ▨ SQL(Structured Query Language) ▨
 ```
 - 데이터베이스(Database) 또는 스키마(Schema)
-- 열(컬럼, Coulumn) 또는 필드(Field) 또는 속성(Attribute)
+- 열(컬럼, Column) 또는 필드(Field) 또는 속성(Attribute)
 - 행(로우, Row) 또는 레코드(Record) 또는 튜플(Tuple)
 ```
 
@@ -153,14 +153,14 @@ CREATE TABLE 테이블명 (
 - 참조 무결성을 위반하게 되어 실행되지 않는다 → 참조 무결성 제약조건
 - 데이터 관계의 일관성을 보장
 
- ```sql
+ ```SQL
  FOREIGN KEY (컬럼명) REFERENCES 참조할테이블명(참조할컬럼(기본키)명)
  ON DELETE [CASECADE/SET NULL/NO ACTION/SET DEFAULT]          -- 삭제할 때 옵션
  ON UPDATE [CASECADE/SET NULL/NO ACTION/SET DEFAULT]          -- 수정할 때 옵션
  ```
 
 - 레퍼런스 옵션
-   1. CASECADE : 
+   1. CASCADE : 
       - 부모 테이블(참조하는 테이블)에서 삭제되거나 키 값이 변경되면
       - 자식 테이블에서도 동일하게 삭제되거나 변경된다.
       - 일관성을 유지하는 데 도움이 되는 옵션
@@ -211,7 +211,7 @@ CREATE TABLE 테이블명 (
 
 ```sql
 -- 1. information_schema 오브젝트를 통해 확인
--- CONTRAINT_NAME 필드 : 제약조건의 이름
+-- CONSTRAINT_NAME 필드 : 제약조건의 이름
 SELECT * FROM information_schema.table_constraints
 WHERE table_name = '테이블명';  -- 테이블명
 
