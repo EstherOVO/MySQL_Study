@@ -9,7 +9,7 @@ USE alter_test;
 DROP TABLE employees;
 DROP TABLE departments;
 
--- 데이터베이스(스키마, Scheman) 삭제
+-- 데이터베이스(스키마, Schema) 삭제
 DROP SCHEMA alter_test;
 
 -- 여러 테이블 동시 삭제(스키마명.테이블명)
