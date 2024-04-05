@@ -15,7 +15,7 @@
     - GRANT, REVOKE
 - 트랜잭션 제어 언어(Transaction Cotrol Language) : TCL
 
-## DCL(Data Control Language)
+## DCL(데이터 제어 언어, Data Control Language)
 - 데이터의 접근 권한을 제어하고 관리하는 명령어들의 집합
 1. **유저 생성 SQL문**
 ```SQL
@@ -58,7 +58,7 @@ DROP USER '사용자명'@'호스트명';
     - 대체 키 : 후보 키 중 기본 키로 선택되지 않은 키
     - 복합 키 : 두 개 이상의 속성을 조합하여 만든 키
 
-## 제약조건(Constaint)
+## 제약조건(Constraint)
 - 무결성(Integrity) : DB에서 저장된 데이터의 일관성과 정확성을 지키는 것
    1. NOT NULL
       - 해당 컬럼에는 NULL 값이 허용되지 않는다.
@@ -221,7 +221,7 @@ WHERE table_name = '테이블명';  -- 테이블명
 SHOW CREATE TABLE employees;
 ```
 
-## DML(데이터 조작어)
+## DML(데이터 조작 언어, Data Manipulation Language)
 - INSERT(데이터 삽입)
     - DB의 테이블에 새로운 데이터 행을 추가하는 데 사용하는 SQL 문법
     ```SQL
@@ -293,3 +293,29 @@ SHOW CREATE TABLE employees;
   - 한 번 삭제된 데이터는 복구되지 않으므로 데이터 백업에 주의해야 한다.
   - 참조 무결성 제약조건을 위배할 경우 데이터 삭제에 실패하거나 연쇄적(CASCADE 레퍼런스 옵션)으로 삭제될 수 있다.
 
+## DQL(데이터 질의 언어, Data Query Language)
+- SELECT
+  기본 구조
+  ```SQL
+  SELECT 컬럼명1, 컬럼명2, ...
+  FROM 테이블명;
+
+  -- 테이블의 모든 데이터 조회
+  SELECT * FROM 테이블명;
+
+  -- 특정 조건 선택 : Selection Condition
+  SELECT 컬럼명1, 컬럼명2, ...
+  FROM 테이블명
+  WHERE 조건절;
+  ```
+  - (asterisk) : 테이블의 모든 열을 선택하겠다.
+  - 셀렉션(컨디션)
+    - σ 가격 > 8000 (상품) : 가격이 8000원 이상인 행들만 선택
+    ```SQL
+    SELECT * FROM 상품 WHERE 가격 > 8000;
+    ```
+  - 프로젝션(애트리뷰트)
+    - π 이름, 주소 (고객) : 고객 테이블에서 이름 주소 속성만 선택
+    ```SQL
+    SELECT 이름, 주소 FROM 고객
+    ```
