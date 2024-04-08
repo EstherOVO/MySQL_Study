@@ -16,6 +16,7 @@ SELECT job AS '직무' , avg(sal) AS '평균 급여' FROM emp GROUP BY job HAVIN
 SELECT ename, sal FROM emp WHERE sal = (SELECT min(sal) FROM emp) OR sal = (SELECT max(sal) FROM emp);
 
 -- 문제 6 : EMP 테이블에서 각 부서별로 가장 높은 급여를 받는 직원의 급여를 조회하세요.
+SELECT deptno, ename, sal FROM emp WHERE sal IN (SELECT max(sal) FROM emp GROUP BY deptno);
 SELECT deptno, max(sal) FROM emp GROUP BY deptno;
 
 -- 문제 7 : EMP 테이블에서 각 부서별 총 급여(SAL)를 계산하세요.
