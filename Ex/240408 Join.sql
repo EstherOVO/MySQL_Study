@@ -10,13 +10,13 @@ USE employees;
 SELECT e.first_name, e.last_name, t.title
 FROM employees e
 JOIN titles t ON e.emp_no = t.emp_no
-WHERE t.to_date >= '9999-01-01';
+WHERE t.to_date = '9999-01-01';
 
 -- 문제 2 : 각 부서의 이름(dept_name)과 그 부서에 현재 속해있는 직원 수를 조회하세요.
 SELECT dp.dept_name, count(de.emp_no)
 FROM departments dp
 JOIN dept_emp de ON dp.dept_no = de.dept_no
-WHERE de.to_date >= '9999-01-01'
+WHERE de.to_date = '9999-01-01'
 GROUP BY dp.dept_name;
 
 -- 문제 3 : 현재 직원 중 급여가 80000 이상인 직원의 이름(first_name, last_name)과 급여(salary)를 조회하세요.
