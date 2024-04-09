@@ -15,7 +15,7 @@
     - GRANT, REVOKE
 - 트랜잭션 제어 언어(Transaction Cotrol Language) : TCL
 
-## DCL(데이터 제어 언어, Data Control Language)
+## :pin: DCL(데이터 제어 언어, Data Control Language)
 - 데이터의 접근 권한을 제어하고 관리하는 명령어들의 집합
 1. **유저 생성 SQL문**
 ```SQL
@@ -416,7 +416,7 @@ SHOW CREATE TABLE employees;
 - JOIN : 두 개 이상의 테이블을 묶어서(결합하여) 새로운 결과 집합(result set)을 만들어 내는 것
 - JOIN의 종류
   1. Inner Join : 두 테이블의 교집합
-      - 양쪽 테이블에 모두 존재하는 데이터를 결합
+      - 양쪽 테이블에 모두 존재하는 데이터(일반적으로 기본 키, 외래 키)를 결합
   2. Outer Join : 다른 테이블 결합이 매칭되지 않는 경우도 데이터 포함
       1. Left Outer Join
       2. Right Outer Join
@@ -447,5 +447,20 @@ SHOW CREATE TABLE employees;
   - USING : 두 테이블에서 공통된 열 이름이 있을 때 유용
   - NATURAL JOIN : 공통 열이 존재할 때 조건 명시 없이 사용
   - 가독성 및 간결성 향상
-  - 주의사항
-    - 서로 다른 테이블의 조인 조건과 별개의 동일 이름, 동일 타입이 존재할 경우 예측 불가능한 결과를 가져올 수 있다.
+  - 주의사항 : 서로 다른 테이블의 조인 조건과 별개의 동일 이름, 동일 타입이 존재할 경우 예측 불가능한 결과를 가져올 수 있다.
+
+## 서브쿼리(부속질의, SubQuery)
+- 다른 SQL 쿼리 내부에 포함되어 있는 쿼리
+  - 주 쿼리(Main Query)
+  - 부 쿼리(Sub Query)
+- 서브 쿼리는 괄호(...) 내부에 작성이 되어 주 쿼리와 구분된다.
+- 서브 쿼리는 주 쿼리보다 먼저 실행되고, 서브 쿼리의 결과 주 쿼리에 사용된다.
+- 서브 쿼리의 사용처
+  - WHERE 절, SELECT 절, FROM 절, HAVING 절 등...
+  - WHERE 절 : 데이터 필터링을 하기 위해 사용
+1. 단일 행 서브 쿼리(Single Row SubQuery)
+    - 반드시 하나의 행만 반환해야 한다.
+    - 하나의 결과 값만 나오는 쿼리를 서브 쿼리로 작성하거나 집계 함수 등을 사용하여 반드시 하나의 행이 결과 값으로 갖도록 보장해야 한다.
+2. 다중 행 서브 쿼리(Multi Row SubQuery)
+    - 쿼리 실행 결과로 여러 행을 반환하는 서브 쿼리
+    - IN, ANY, ALL, EXISTS 등의 연산자와 함께 사용
