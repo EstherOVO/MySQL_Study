@@ -42,7 +42,7 @@ DROP USER '사용자명'@'호스트명';
 - 일반적으로 사용자에게 최소한(필요한)의 권한만 부여하는 **최소 권한 원칙** 따른다.
 - 데이터에 대한 무단 접근을 방지하고, 시스템 보안 수준을 높일 수 있다.
 
-## Key
+## :pushpin: Key
 - 키(Key) : 데이터의 무결성을 유지하기 위해 사용되는 특별한 속성
     - **기본 키(Primary Key) → PK**
       - 테이블의 행을 고유하게 식별하는 키
@@ -58,7 +58,7 @@ DROP USER '사용자명'@'호스트명';
     - 대체 키 : 후보 키 중 기본 키로 선택되지 않은 키
     - 복합 키 : 두 개 이상의 속성을 조합하여 만든 키
 
-## 제약조건(Constraint)
+## :pushpin: 제약조건(Constraint)
 - 무결성(Integrity) : DB에서 저장된 데이터의 일관성과 정확성을 지키는 것
    1. NOT NULL
       - 해당 컬럼에는 NULL 값이 허용되지 않는다.
@@ -96,7 +96,7 @@ DROP USER '사용자명'@'호스트명';
       - 해당 열의 값이 자동으로 생성
       - 특정 규칙에 따라 숫자가 증가하거나 문자열이 생성 등
 
-## 속성 데이터 타입
+## :pushpin: 속성 데이터 타입
 1. 숫자형 데이터 타입
     - INT : 정수 4byte
     - DECIMAL(M, N) : 고정 소수점 숫자, 정확한 소수 계산에 필요 M 총 자릿수, N 소수점 이하 자릿수
@@ -123,11 +123,11 @@ DROP USER '사용자명'@'호스트명';
 6. 열거형
     - ENUM : 미리 정의된 값 중 하나를 저장 ENUM('mon', 'tue', 'wed' ...)
 
-## 도메인 무결성
+## :pushpin: 도메인 무결성
 - 릴레이션 내 튜플(행, Row)들이 각 속성의 도메인이 지정된 값만 가져야 하는 조건
 - 데이터 타입, Null 허용 또는 Not Null, default, check 제약 조건 등으로 제약 조건을 가진다.
 
-## 테이블 생성
+## :pushpin: 테이블 생성
 - CREATE : DDL(데이터 정의어)
 - 데이터베이스 생성 문법
 ```SQL
@@ -146,7 +146,7 @@ CREATE TABLE 테이블명 (
 );
   ```
 
-## 외래 키 참조
+## :pushpin: 외래 키 참조
 - 참조 무결성 제약조건
 - 한 테이블의 컬럼이 다른 테이블의 키(기본 키)를 참조
 - 외래 키 컬럼에 참조 위치에 존재하지 않는 값을 넣을 경우
@@ -173,7 +173,7 @@ CREATE TABLE 테이블명 (
    4. SET DEFAULT
       - 삭제나 수정될 때 사전에 정의된 기본 값으로 설정
 
-## ALTER
+## :pushpin: ALTER
 - DDL(데이터 정의어), 데이터베이스 및 객체의 구조를 수정하는 데 사용
 - ALTER TABLE
   - 테이블의 열을 추가, 삭제, 타입 변경 등의 수정 작업을 할 수 있다.
@@ -203,7 +203,7 @@ CREATE TABLE 테이블명 (
     RENAME TO 새로운테이블명;
     ```
 
-## CONSTRAINT 제약조건명(제약조건 이름 명시하기)
+## :pushpin: CONSTRAINT 제약조건명(제약조건 이름 명시하기)
 - 제약조건은 생성 시 이름을 생략하고 만들 수 있다.
 - 생략하고 만들 경우 자동으로 제약조건의 이름이 부여된다.
 - 생성 시 `CONSTRAINT 제약조건명` 이 부여되면, 제약조건 이름을 명시할 수 있다.
@@ -221,7 +221,7 @@ WHERE table_name = '테이블명';  -- 테이블명
 SHOW CREATE TABLE employees;
 ```
 
-## DML(데이터 조작 언어, Data Manipulation Language)
+## :pushpin: DML(데이터 조작 언어, Data Manipulation Language)
 - INSERT(데이터 삽입)
     - DB의 테이블에 새로운 데이터 행을 추가하는 데 사용하는 SQL 문법
     ```SQL
@@ -293,7 +293,7 @@ SHOW CREATE TABLE employees;
   - 한 번 삭제된 데이터는 복구되지 않으므로 데이터 백업에 주의해야 한다.
   - 참조 무결성 제약조건을 위배할 경우 데이터 삭제에 실패하거나 연쇄적(CASCADE 레퍼런스 옵션)으로 삭제될 수 있다.
 
-## DQL(데이터 질의 언어, Data Query Language)
+## :pushpin: DQL(데이터 질의 언어, Data Query Language)
 - SELECT
   기본 구조
   ```SQL
@@ -386,7 +386,7 @@ SHOW CREATE TABLE employees;
    FROM 테이블명;
    ```
 
-## 집계 함수 및 그룹화
+## :pushpin: 집계 함수 및 그룹화
 - 데이터베이스에서 여러 행으로부터 단일 결과 값을 도출하는 데 사용
 - 데이터 분석, 요양 등에 유용하게 활용된다.
 - COUNT, SUM, AVG, MIN, MAX 등
@@ -412,7 +412,7 @@ SHOW CREATE TABLE employees;
     WITH ROLLUP
     ```
 
-## JOIN(데이터 결합)
+## :pushpin: JOIN(데이터 결합)
 - JOIN : 두 개 이상의 테이블을 묶어서(결합하여) 새로운 결과 집합(result set)을 만들어 내는 것
 - JOIN의 종류
   1. Inner Join : 두 테이블의 교집합
@@ -449,7 +449,7 @@ SHOW CREATE TABLE employees;
   - 가독성 및 간결성 향상
   - 주의사항 : 서로 다른 테이블의 조인 조건과 별개의 동일 이름, 동일 타입이 존재할 경우 예측 불가능한 결과를 가져올 수 있다.
 
-## 서브쿼리(부속질의, SubQuery)
+## :pushpin: 서브쿼리(부속질의, SubQuery)
 - 다른 SQL 쿼리 내부에 포함되어 있는 쿼리
   - 주 쿼리(Main Query)
   - 부 쿼리(Sub Query)
