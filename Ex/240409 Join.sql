@@ -1,7 +1,5 @@
 USE sakila;
 
-SELECT * FROM customer;
-
 -- 문제 1 : 고객(customer)의 이름과 그들이 대여(rental)한 영화(film)의 제목을 조회하세요.
 -- 사용 테이블 : customer(customer_id, first_name, last_name), rental(rental_id, customer_id, inventory_id), film(film_id, title), inventory(inventory_id, film_id)
 SELECT c.first_name, c.last_name, f.title
