@@ -15,7 +15,7 @@
     - GRANT, REVOKE
 - 트랜잭션 제어 언어(Transaction Cotrol Language) : TCL
 
-## :pin: DCL(데이터 제어 언어, Data Control Language)
+## :pushpin: DCL(데이터 제어 언어, Data Control Language)
 - 데이터의 접근 권한을 제어하고 관리하는 명령어들의 집합
 1. **유저 생성 SQL문**
 ```SQL
@@ -461,6 +461,13 @@ SHOW CREATE TABLE employees;
 1. 단일 행 서브 쿼리(Single Row SubQuery)
     - 반드시 하나의 행만 반환해야 한다.
     - 하나의 결과 값만 나오는 쿼리를 서브 쿼리로 작성하거나 집계 함수 등을 사용하여 반드시 하나의 행이 결과 값으로 갖도록 보장해야 한다.
+    - 단일 행 서브 쿼리는 =, >, < 등의 비교연산자와 함께 사용
+      ```SQL
+      SELECT 컬럼명, .. FROM 테이블명 WHERE 조건 = (서브쿼리);
+      ```
 2. 다중 행 서브 쿼리(Multi Row SubQuery)
     - 쿼리 실행 결과로 여러 행을 반환하는 서브 쿼리
     - IN, ANY, ALL, EXISTS 등의 연산자와 함께 사용
+      ```SQL
+      SELECT 컬럼명, .. FROM 테이블명 WHERE IN (서브쿼리);
+      ```
