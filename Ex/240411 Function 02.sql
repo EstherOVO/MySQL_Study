@@ -1,7 +1,7 @@
 USE sakila;
 
 -- 문제 1 : film 테이블에서 길이(length)가 120분 이상인 영화의 제목(title)과 길이를 조회하되, '긴 영화', '짧은 영화'로 분류하세요. 
-SELECT title, IF (length > 120, '긴 영화', '짧은 영화') FROM film ORDER BY title;
+SELECT title, IF (length >= 120, '긴 영화', '짧은 영화') FROM film ORDER BY title;
 
 -- 문제 2 : actor 테이블에서 첫 번째 이름(first_name)과 성(last_name)을 합쳐서 전체 이름을 조회하세요.
 SELECT concat_ws(' ', first_name, last_name) FROM actor;
@@ -13,7 +13,6 @@ SELECT title, length(title) FROM film;
 SELECT datediff(return_date, rental_date) FROM rental;
 
 -- 문제 5 : payment 테이블에서 모든 결제 금액을 달러 자리까지 반올림하여 조회하세요.
-SELECT * FROM payment;
 SELECT round(sum(amount)) FROM payment;
 
 -- 문제 6 : 모든 영화 제목에서 공백을 '-'로 변환하세요. 
