@@ -1,5 +1,5 @@
-CREATE SCHEMA IF NOT EXISTS `class_db` DEFAULT CHARACTER SET utf8 ;
-USE `class_db` ;
+CREATE SCHEMA IF NOT EXISTS `class_db`;
+USE `class_db`;
 
 -- 1. 멤버(Member) 테이블 생성
 CREATE TABLE `Member` (
@@ -24,20 +24,14 @@ CREATE TABLE IF NOT EXISTS `Class` (
 	`class_end_time` TIME NULL,
 	`trainer_ID` INT NOT NULL,
 	PRIMARY KEY (`class_id`),
-	INDEX `fk_Class_Trainer1_idx` (`trainer_ID` ASC) VISIBLE,
 	CONSTRAINT `fk_Class_Trainer1`
-	FOREIGN KEY (`trainer_ID`) REFERENCES `Trainer` (`trainer_ID`)
-	ON DELETE CASCADE
-	ON UPDATE CASCADE);
+	FOREIGN KEY (`trainer_ID`) REFERENCES `Trainer` (`trainer_ID`) ON DELETE CASCADE ON UPDATE CASCADE);
     
 -- 4. 등록(Enrollment) 클래스 관리
 CREATE TABLE IF NOT EXISTS `Enrollment` (
 	`class_id` INT NOT NULL,
 	`trainer_ID` INT NOT NULL,
 	`member_ID` INT NOT NULL,
-	INDEX `fk_Enrollment_Class_idx` (`class_id` ASC) VISIBLE,
-	INDEX `fk_Enrollment_Trainer1_idx` (`trainer_ID` ASC) VISIBLE,
-	INDEX `fk_Enrollment_Member1_idx` (`member_ID` ASC) VISIBLE,
 	CONSTRAINT `fk_Enrollment_Class`
 	FOREIGN KEY (`class_id`) REFERENCES `Class` (`class_id`) ON DELETE CASCADE ON UPDATE CASCADE,
 	CONSTRAINT `fk_Enrollment_Trainer1`
