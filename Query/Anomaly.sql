@@ -59,7 +59,6 @@ SELECT price FROM summer WHERE class = 'Java';
 
 -- ---------------------------------------
 
--- 이상현상을 발생시키지 않기 위해 테이블 구조 수정
 -- 이상현상을 발생시키지 않기 위해 테이블 구조를 수정
 -- 1. 과정명과 가격 정보만 가지고 있는 테이블
 CREATE TABLE summerPrice (
