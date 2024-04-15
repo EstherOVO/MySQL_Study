@@ -51,7 +51,7 @@ SELECT count(*), sum(price) FROM summer;				-- 삽입 이상
 DELETE FROM summer WHERE class LIKE 'C++';
 
 -- 수정 이상
--- 질의 : Java 강좌의 가격을 15000원으로 수정하세요.
+-- 질의 : 'Java' 강좌의 가격을 15000원으로 수정하세요.
 UPDATE summer SET price = 15000 WHERE class LIKE 'Java' AND s_ID = 100;
 -- 고유 값을 기반으로 조건부 수정하게 될 경우 최신 값 일관성이 깨진다.
 -- Java 강의료를 조회하면 데이터 불일치가 발생하게 된다.(2개의 행)
@@ -115,7 +115,7 @@ FROM summerEnroll se
 JOIN summerPrice sp USING (class); 
 
 -- 수정 이상 → 다시 수행
--- 질의 : Java 강좌의 가격을 15000원으로 수정하세요.
+-- 질의 : 'Java' 강좌의 가격을 15000원으로 수정하세요.
 UPDATE summerPrice SET price = 15000 WHERE class LIKE 'Java';
 
 -- 3번 질의 재수행
