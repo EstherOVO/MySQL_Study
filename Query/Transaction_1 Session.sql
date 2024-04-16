@@ -26,9 +26,6 @@ CREATE TABLE transaction_log (
     CONSTRAINT `fk_log_to_account` FOREIGN KEY (to_account) REFERENCES accounts(account_id)
 );
 
-SHOW INDEXES IN accounts;
-SELECT * FROM Information_schema.table_constraints WHERE table_name = 'transaction_log';
-
 -- 계좌 데이터 삽입
 INSERT INTO accounts (account_name, balance)
 VALUES ('홍길동', 100000), ('전우치', 200000);

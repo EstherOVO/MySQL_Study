@@ -40,4 +40,27 @@ SELECT * FROM Person;
 -- 락(Lock)
 -- ---------------------------------------
 
+-- 현재 트랜잭션 중인 테이블의 행에 접근하게 될 경우
+-- → 락이 걸려있어 해당 자원에 접근할 수 없음
+-- (락이 있는 동안) 수정 불가하고, 락 해제 후 수정이 가능하다.
 UPDATE lock_demo SET data = '다른 세션에서 수정' WHERE id = 1;
+
+-- 조회 가능
+SELECT * FROM lock_demo;
+SELECT data FROM lock_demo WHERE id = 1;
+
+-- 읽기 락
+-- 락 읽기 시도
+SELECT * FROM lock_demo;
+
+-- 락 수정 시도(수정 불가) → 대기
+UPDATE lock_demo SET data = '읽기 락' WHERE id = 1;
+
+-- ---------------------------------------
+
+-- 쓰기 락
+-- 현재 세션 락 읽기 시도(읽기 불가)
+SELECT * FROM lock_demo;
+
+-- 현재 세션 락 수정 시도(쓰기 불가)
+UPDATE lock_demo SET data = '쓰기 락' WHERE id = 1;
