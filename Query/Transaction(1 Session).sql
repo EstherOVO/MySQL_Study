@@ -38,7 +38,7 @@ UPDATE accounts SET balance = balance - 50000 WHERE account_name = '홍길동';
 
 SELECT * FROM accounts;	-- 세션 1(현재 세션)에서 조회 → 부분 완료
 
--- 2.입금(전우치 계좌로 5만 원 입금)
+-- 2. 입금(전우치 계좌로 5만 원 입금)
 UPDATE accounts SET balance = balance + 50000 WHERE account_name = '전우치';
 
 SELECT * FROM accounts;	-- 세션 1(현재 세션)에서 조회 → 부분 완료
@@ -68,7 +68,7 @@ START TRANSACTION;
 -- 1. 인출(홍길동 계좌에서 15만 원 인출)
 UPDATE accounts SET balance = balance - 150000 WHERE account_name = '홍길동';
 
--- 2.입금(전우치 계좌로 15만 원 입금)
+-- 2. 입금(전우치 계좌로 15만 원 입금)
 UPDATE accounts SET balance = balance + 150000 WHERE account_name = '전우치';
 
 SELECT * FROM accounts;
@@ -89,7 +89,7 @@ START TRANSACTION;
 -- 1. 인출(홍길동 계좌에서 3만 원 인출)
 UPDATE accounts SET balance = balance - 30000 WHERE account_name = '홍길동';
 
--- 2.입금(전우치 계좌로 3만 원 입금)
+-- 2. 입금(전우치 계좌로 3만 원 입금)
 UPDATE accounts SET balance = balance + 30000 WHERE account_name = '전우치';
 
 -- 3. 거래 기록 저장
@@ -108,7 +108,7 @@ SAVEPOINT midway;	-- 첫 번째 거래(입출금) 기록 저장 및 중간점 �
 -- 1. 인출(홍길동 계좌에서 10만 원 인출)
 UPDATE accounts SET balance = balance - 100000 WHERE account_name = '홍길동';
 
--- 2.입금(전우치 계좌로 10만 원 입금)
+-- 2. 입금(전우치 계좌로 10만 원 입금)
 UPDATE accounts SET balance = balance + 10000 WHERE account_name = '전우치';
 
 SELECT * FROM accounts;	-- 금액이 마이너스인 데이터 확인
